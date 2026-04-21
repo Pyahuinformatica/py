@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="es-PY">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Pyahu Solución Informática - Pedido Rápido WhatsApp</title>
+    
+    <meta name="theme-color" content="#d35400">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Pyahu Informática">
+    
+    <meta property="og:title" content="Pyahu Solución Informática">
+    <meta property="og:description" content="Reparación, recarga de tintas/toner y venta de insumos en Ciudad del Este, Paraguay. Envíanos tu pedido directo por WhatsApp.">
+    <meta property="og:image" content="https://pyahuinformatica.github.io/py/printer-page-imagem/logo-imagen-01.png">
+    <meta property="og:url" content="https://pyahuinformatica.github.io/py/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Pyahu Informática">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="printer-page-imagem/logo-imagen-01.png">
+    
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: url('printer-page-imagem/body-fondo-imagen-01.png') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+                background-position: top center;
+            }
+            body::before {
+                background: rgba(0, 0, 0, 0.55);
+            }
+        }
+
+        /* ========== SLIDER RESPONSIVO ========== */
+        .slider-container {
+            width: 100%;
+            position: relative;
+            background: #000;
+            overflow: hidden;
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+        .slide {
+            width: 100%;
+            flex-shrink: 0;
+        }
+        .slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+            object-fit: cover;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .slider-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 10;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            border: none;
+            padding: 0;
+            transition: all 0.2s;
+        }
+        .dot.active {
+            background: #ffd700;
+            transform: scale(1.2);
+        }
+        .dot:hover {
+            background: #ffd700;
+        }
+
+        .header-text {
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.85), rgba(26, 26, 26, 0.85));
+            padding: 0 20px 30px 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        .flex-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        .logo {
+            transform: translate(-12px, -10px);
+        }
+
+        .logo img {
+            max-height: 120px;
+            width: auto;
+            border-radius: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .info {
+            transform: translateX(-12px);
+            text-align: left;
+        }
+
+        @media (max-width: 600px) {
+            .logo {
+                transform: translate(-6px, -5px);
+            }
+            .logo img {
+                max-height: 70px;
+            }
+            .info {
+                transform: translateX(-6px);
+                text-align: center;
+            }
+            .flex-container {
+                flex-direction: column;
+                text-align: center;
+                margin-top: 15px;
+                gap: 10px;
+            }
+            .audio-discreet-wrapper {
+                justify-content: center;
+                width: 100%;
+            }
+            .discreet-audio {
+                width: 100%;
+                max-width: 250px;
+                height: 40px;
+            }
+            .footer .sep {
+                display: none;
+            }
+            .name-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            .form-card {
+                background: rgba(30, 30, 35, 0.92);
+                margin: 0 8px;
+            }
+            .slider-dots {
+                bottom: 8px;
+            }
+            .dot {
+                width: 8px;
+                height: 8px;
+            }
+            .info h1 {
+                font-size: 1.2rem;
+            }
+            .info p {
+                font-size: 0.8rem;
+            }
+        }
+
+        .info h1 {
+            color: #d35400;
+            font-size: clamp(1rem, 5vw, 1.5rem);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            margin-bottom: 5px;
+        }
+
+        .info p {
+            color: #fff;
+            font-size: clamp(0.7rem, 3.5vw, 0.9rem);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        .audio-discreet-wrapper {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .discreet-audio {
+            width: 190px;
+            height: 32px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 60px;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+            transition: all 0.2s ease;
+        }
+        
+        @media (max-width: 600px) {
+            .discreet-audio {
+                width: 100%;
+                max-width: 220px;
+                height: 36px;
+            }
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 15px;
+        }
+
+        .form-card {
+            background: rgba(30, 30, 35, 0.88);
+            border-radius: 20px;
+            padding: 25px 20px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .form-card:hover {
+            backdrop-filter: blur(6px);
+            border-color: rgba(255, 215, 0, 0.5);
+        }
+
+        .form-card h2 {
+            text-align: center;
+            color: #ffd700;
+            font-size: clamp(1rem, 5vw, 1.5rem);
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .form-card h2 span {
+            color: #ddd;
+            font-size: 0.75rem;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .name-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .name-row .form-group {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: #f0f0f0;
+            margin-bottom: 6px;
+            font-size: clamp(0.75rem, 3.5vw, 0.9rem);
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+        }
+
+        .required-asterisk {
+            color: #ff9999;
+            margin-left: 4px;
+            font-size: 0.8rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #555;
+            border-radius: 12px;
+            font-size: 14px;
+            background: rgba(34, 34, 34, 0.95);
+            color: #fff;
+            transition: border 0.2s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #ffd700;
+            outline: none;
+            background: rgba(42, 42, 42, 0.98);
+        }
+
+        /* ========== BOTÕES - POSIÇÕES PERFEITAS ========== */
+        .buttons-wrapper {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            border: none;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            white-space: nowrap;
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: #fff;
+        }
+
+        .btn-whatsapp:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-Oferta {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: #fff;
+            border: 1px solid #ffd700;
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+        }
+        
+        .btn-Oferta:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 18px rgba(231, 76, 60, 0.6);
+        }
+
+        .btn-Nuevo {
+            background: linear-gradient(135deg, #ff8c00, #e67e22);
+            color: #fff;
+        }
+
+        .btn-Nuevo:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        /* DESKTOP: botões lado a lado */
+        @media (min-width: 769px) {
+            .buttons-wrapper {
+                flex-direction: row;
+                justify-content: center;
+            }
+            .btn {
+                min-width: 180px;
+            }
+        }
+
+        /* CELULAR: botões empilhados */
+        @media (max-width: 768px) {
+            .buttons-wrapper {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+                padding: 14px 20px;
+            }
+        }
+
+        /* Landscape (celular deitado) */
+        @media (max-width: 896px) and (orientation: landscape) {
+            .buttons-wrapper {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .btn {
+                min-width: 140px;
+                padding: 10px 16px;
+                font-size: 0.85rem;
+            }
+        }
+
+        .footer {
+            background: rgba(10, 10, 10, 0.9);
+            color: #ccc;
+            text-align: center;
+            padding: 15px 0;
+            font-size: clamp(0.6rem, 3vw, 0.75rem);
+            border-top: 1px solid #333;
+        }
+
+        .footer p {
+            padding: 0 20px;
+            margin: 6px 0;
+        }
+
+        .footer a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+
+        .footer a.facebook-link {
+            color: #6bc6ff;
+        }
+
+        .footer i {
+            margin-right: 4px;
+        }
+
+        .footer .sep {
+            color: #666;
+            margin: 0 6px;
+        }
+
+        .btn-share-link {
+            background: none;
+            border: none;
+            color: #ff69b4;
+            cursor: pointer;
+            font-size: inherit;
+            font-family: inherit;
+            padding: 0;
+            margin: 0;
+            transition: all 0.2s ease;
+        }
+        .btn-share-link:hover {
+            color: #ff1493;
+            text-decoration: underline;
+            transform: scale(1.05);
+        }
+        .btn-share-link:active {
+            color: #db7093;
+            transform: scale(0.95);
+        }
+
+        .footer-images {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .footer-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+
+        .status.success { background: #1e4620; color: #d4edda; border: 1px solid #2e6b2f; }
+        .status.error { background: #5a1e1e; color: #f8d7da; border: 1px solid #a33; }
+        .status.warning { background: #856404; color: #fff3cd; border: 1px solid #ffeeba; }
+
+        .copy-btn {
+            background: #ffd700;
+            color: #000;
+            border: none;
+            padding: 12px;
+            border-radius: 50px;
+            margin-top: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+
+        .mensaje-preview {
+            background: rgba(42, 42, 42, 0.95);
+            border-radius: 12px;
+            padding: 12px;
+            margin-top: 15px;
+            font-family: monospace;
+            font-size: 12px;
+            color: #ddd;
+            max-height: 200px;
+            overflow: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+            border: 1px solid #555;
+            display: none;
+        }
+
+        .modal-Oferta {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-Oferta-content {
+            background: transparent;
+            max-width: 90vw;
+            max-height: 90vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-Oferta-img {
+            max-width: 85vw;
+            max-height: 75vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border: 3px solid #ffd700;
+            background: #2c2c2c;
+        }
+        
+        .btn-cerrar-Oferta {
+            margin-top: 20px;
+            background: linear-gradient(135deg, #d35400, #e67e22);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+        
+        .btn-cerrar-Oferta:hover {
+            background: linear-gradient(135deg, #b3470c, #c0392b);
+            transform: scale(1.02);
+        }
+
+        .install-btn-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .btn-install {
+            background: linear-gradient(135deg, #d35400, #e67e22);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-install:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        .uninstall-info {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(0,0,0,0.7);
+            color: #ccc;
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-size: 10px;
+            font-family: monospace;
+            backdrop-filter: blur(4px);
+            cursor: help;
+        }
+
+        .uninstall-info:hover {
+            background: rgba(0,0,0,0.9);
+            color: #ffd700;
+        }
+
+        @media (max-width: 768px) {
+            .install-btn-container { bottom: 10px; right: 10px; }
+            .btn-install { padding: 8px 14px; font-size: 12px; }
+            .uninstall-info { bottom: 10px; left: 10px; font-size: 8px; padding: 4px 10px; }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            color: #fff;
+            border: 1px solid #ffd700;
+        }
+
+        .modal-content h3 {
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .modal-content ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        .modal-content li {
+            margin: 10px 0;
+            line-height: 1.4;
+        }
+
+        .close-modal {
+            background: #d35400;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 15px;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        .close-modal:hover {
+            background: #e67e22;
+        }
+        
+        .counter-no-link {
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-text">
+        <div class="slider-container">
+            <div class="slider" id="slider">
+                <div class="slide"><img src="slides-imagens/titulo-pagina-imagen-01.png" alt="Pyahu Slide 1" loading="lazy"></div>
+                <div class="slide"><img src="slides-imagens/titulo-pagina-imagen-02.png" alt="Pyahu Slide 2" loading="lazy"></div>
+                <div class="slide"><img src="slides-imagens/titulo-pagina-imagen-03.png" alt="Pyahu Slide 3" loading="lazy"></div>
+                <div class="slide"><img src="slides-imagens/titulo-pagina-imagen-04.png" alt="Pyahu Slide 4" loading="lazy"></div>
+            </div>
+            <div class="slider-dots" id="sliderDots"></div>
+        </div>
+        
+        <div class="flex-container">
+            <div class="logo">
+                <img src="printer-page-imagem/logo-imagen-01.png" alt="Logo Pyahu" loading="lazy" id="logoImg">
+            </div>
+            <div class="info">
+                <h1>PYAHU Solución Informática</h1>
+                <p>Ciudad del Este - Paraguay | Tu Solución en Tecnología</p>
+                <div class="audio-discreet-wrapper">
+                    <audio controls preload="metadata" class="discreet-audio">
+                        <source src="printer-page-imagem/audio-01.mp3" type="audio/mpeg">
+                        <source src="printer-page-imagem/audio-01.ogg" type="audio/ogg">
+                    </audio>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="form-card">
+            <h2>📋 Atención Rápida y Segura <span>Completa el formulario y envíanos tu solicitud al instante</span></h2>
+            <form id="formPedido">
+                <div class="name-row">
+                    <div class="form-group">
+                        <label>👤 Nombre <span class="required-asterisk">*</span></label>
+                        <input type="text" id="nombre" class="capitalize" required placeholder="Tu nombre">
+                    </div>
+                    <div class="form-group">
+                        <label>👤 Apellido <span class="required-asterisk">*</span></label>
+                        <input type="text" id="apellido" class="capitalize" required placeholder="Tu apellido">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>🏢 Empresa / Domicilio (opcional)</label>
+                    <input type="text" id="empresa" class="capitalize" placeholder="Nombre de la empresa o referencia">
+                </div>
+                
+                <div class="form-group">
+                    <label>❓ ¿Yo Necesito? <span class="required-asterisk">*</span></label>
+                    <select id="YoNecesito" required>
+                        <option value="">-- Elige una opción --</option>
+                        <option value="Reparacion">🔧 Reparación</option>
+                        <option value="Recarga Tintas">💧 Recarga de Tintas</option>
+                        <option value="Recarga Toner">⚫ Recarga de Toner</option>
+                        <option value="Compra">🛒 Compra de Insumos</option>
+                        <option value="Hacer una Donacion">🎁 Quiero Donar</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>🖨️ Selecciona Tu Equipamiento <span class="required-asterisk">*</span></label>
+                    <select id="modelo" required>
+                        <option value="">-- Elige una Opción --</option>
+                        <option value="FOTOCOPIADORA">FOTOCOPIADORA</option>
+                        <option value="IMPRESORA CHORRO TINTA ">IMPRESORA CHORRO TINTA</option>
+                        <option value="IMPRESORA LASER POLVO">IMPRESORA LASER POLVO</option>
+                        <option value="IMPRESORA TERMICA">IMPRESORA TERMICA</option>
+                        <option value="IMPRESORA MATRICIAL">IMPRESORA MATRICIAL</option>
+                        <option value="IMPRESORA SUBLIMACIÓN">IMPRESORA SUBLIMACIÓN</option>
+                        <option value="PLOTTER DISEÑO">PLOTTER DISEÑO</option>
+                        <option value="PLOTTER CORTE">PLOTTER CORTE</option>
+                        <option value="PLOTTER 3D">PLOTTER 3D</option>
+                        <option value="PRENSA TÉRMICA">PRENSA TÉRMICA</option>
+                        <option value="CONTADOR BILLETE">CONTADOR BILLETE</option>
+                        <option value="NOTEBOOK">NOTEBOOK</option>
+                        <option value="COMPUTADORA">COMPUTADORA</option>
+                        <option value="Otro modelo">Otro modelo (especificar abajo)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>📝 Especificación <span class="required-asterisk">*</span></label>
+                    <textarea id="especificacion" rows="2" placeholder="Marca, modelo y detalles del equipo" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>💬 Consulta,Requerimiento,Dudas <span class="required-asterisk">*</span></label>
+                    <textarea id="obs" rows="3" placeholder="Describa su Consulta,Falta Tinta,Defecto del Equipamiento" required></textarea>
+                </div>
+
+                <!-- BOTÕES NAS POSIÇÕES EXATAS -->
+                <div class="buttons-wrapper">
+                    <button type="button" class="btn btn-whatsapp" id="btnWhatsApp">
+                        <i class="fab fa-whatsapp"></i> Enviar WhatsApp
+                    </button>
+                    <button type="button" class="btn btn-Oferta" id="btnOferta">
+                        <i class="fas fa-gift"></i> Oferta
+                    </button>
+                    <button type="button" class="btn btn-Nuevo" id="btnLimpiar">
+                        <i class="fas fa-eraser"></i> Nuevo
+                    </button>
+                </div>
+
+                <div id="statusMsg" class="status"></div>
+                <div id="previewMsg" class="mensaje-preview"></div>
+            </form>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>© 1994-Creador 🐱*JOHN EVAN* By XPrinter Groups 💻 Pyahu Solución Informática - Todos los Derechos Reservados</p>
+        <p>
+            📞 <a href="https://wa.me/595982715041" target="_blank">(0982) 715041</a>
+            <span class="sep">|</span>
+            ✉️ <a href="mailto:pyahuinformatica@gmail.com">pyahuinformatica@gmail.com</a>
+            <span class="sep">|</span>
+            📍 Ciudad del Este, Paraguay
+        </p>
+        <p>
+            🕒 Atención: Lunes a Viernes - 07:00 a 16:00
+            <span class="sep">|</span>
+            <a href="https://www.facebook.com/profile.php?id=61582223445770" target="_blank" class="facebook-link">
+                <i class="fab fa-facebook"></i> Facebook
+            </a>
+            <span class="sep">|</span>
+            <button id="btnCompartirSitio" class="btn-share-link">
+                <i class="fas fa-share-alt"></i> Compartir
+            </button>
+        </p>
+        
+        <div style="text-align: center; margin: 12px 0 8px 0; padding: 6px;">
+            <img src="https://hitwebcounter.com/counter/counter.php?page=21491285&style=0005&nbdigits=6&type=page&initCount=0" 
+                 title="Contador de Visitas Pyahu Informática" 
+                 alt="contador de visitas Pyahu" 
+                 style="border: none; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.4); background: rgba(0,0,0,0.2); padding: 5px 10px; cursor: default;">
+        </div>
+        
+        <div class="footer-images">
+            <img class="footer-img" src="printer-page-imagem/footer-imagen-01.png" alt="Footer Image" loading="lazy" id="footerImg1">
+            <img class="footer-img" src="printer-page-imagem/footer-imagen-02.png" alt="Footer Image" loading="lazy" id="footerImg2">
+        </div>
+    </div>
+
+    <div id="modalOferta" class="modal-Oferta">
+        <div class="modal-Oferta-content">
+            <img id="imagenOferta" class="modal-Oferta-img" src="printer-page-imagem/imagen-extra-01.png" alt="Oferta Especial Pyahu" loading="lazy">
+            <button id="btnCerrarOferta" class="btn-cerrar-Oferta">
+                <i class="fas fa-times-circle"></i> Cerrar
+            </button>
+        </div>
+    </div>
+
+    <div id="uninstallModal" class="modal">
+        <div class="modal-content">
+            <h3>🗑️ Cómo desinstalar Pyahu App</h3>
+            <ul>
+                <li><strong>💻 En computadora:</strong> chrome://apps/ → Botón derecho → Eliminar</li>
+                <li><strong>📱 En Android:</strong> Configuración → Apps → Pyahu → Desinstalar</li>
+                <li><strong>🍎 En iPhone/iPad:</strong> Mantén presionado el ícono → Eliminar App</li>
+            </ul>
+            <button class="close-modal" onclick="cerrarModalDesinstalar()">Entendido ✓</button>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            "use strict";
+
+            const slider = document.getElementById('slider');
+            const slides = document.querySelectorAll('.slide');
+            const dotsContainer = document.getElementById('sliderDots');
+            let currentIndex = 0;
+            let intervalId = null;
+            let isPaused = false;
+
+            const totalSlides = slides.length;
+
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.classList.add('dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+
+            const dots = document.querySelectorAll('.dot');
+
+            function updateSlider() {
+                const containerWidth = document.querySelector('.slider-container').offsetWidth;
+                slider.style.transform = `translateX(-${currentIndex * containerWidth}px)`;
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentIndex);
+                });
+            }
+
+            function nextSlide() {
+                if (!isPaused) {
+                    currentIndex = (currentIndex + 1) % totalSlides;
+                    updateSlider();
+                }
+            }
+
+            function goToSlide(index) {
+                currentIndex = index;
+                updateSlider();
+                resetInterval();
+            }
+
+            function startInterval() {
+                if (intervalId) clearInterval(intervalId);
+                intervalId = setInterval(nextSlide, 3000);
+            }
+
+            function resetInterval() {
+                startInterval();
+            }
+
+            function pauseSlider() {
+                if (!isPaused) {
+                    isPaused = true;
+                    if (intervalId) clearInterval(intervalId);
+                }
+            }
+
+            function resumeSlider() {
+                if (isPaused) {
+                    isPaused = false;
+                    startInterval();
+                }
+            }
+
+            window.addEventListener('resize', () => {
+                updateSlider();
+            });
+
+            const slideImages = document.querySelectorAll('.slide img');
+            slideImages.forEach(img => {
+                img.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    pauseSlider();
+                });
+                img.addEventListener('touchend', () => {
+                    resumeSlider();
+                });
+                img.addEventListener('touchcancel', () => {
+                    resumeSlider();
+                });
+                img.addEventListener('mousedown', (e) => {
+                    e.preventDefault();
+                    pauseSlider();
+                });
+                img.addEventListener('mouseup', () => {
+                    resumeSlider();
+                });
+                img.addEventListener('mouseleave', () => {
+                    resumeSlider();
+                });
+            });
+
+            updateSlider();
+            startInterval();
+
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('sw.js').catch(err => console.log('SW error:', err));
+                });
+            }
+
+            let deferredPrompt;
+            let installButton = null;
+
+            function createInstallButton() {
+                if (document.getElementById('installContainer')) return;
+                const container = document.createElement('div');
+                container.className = 'install-btn-container';
+                container.id = 'installContainer';
+                const button = document.createElement('button');
+                button.className = 'btn-install';
+                button.id = 'installButton';
+                button.innerHTML = '<i class="fas fa-download"></i> Instalar App';
+                container.appendChild(button);
+                document.body.appendChild(container);
+                container.style.display = 'none';
+                button.addEventListener('click', async () => {
+                    if (deferredPrompt) {
+                        deferredPrompt.prompt();
+                        await deferredPrompt.userChoice;
+                        deferredPrompt = null;
+                        container.style.display = 'none';
+                    } else {
+                        showInstallInstructions();
+                    }
+                });
+                return button;
+            }
+
+            function showInstallInstructions() {
+                const modal = document.createElement('div');
+                modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:10000;display:flex;align-items:center;justify-content:center;';
+                modal.innerHTML = `
+                    <div style="background:#1e1e1e;padding:30px;border-radius:20px;max-width:400px;border:2px solid #d35400;text-align:center;">
+                        <h3 style="color:#ffd700;">Instalar Pyahu App</h3>
+                        <p style="color:white;">Busca el ícono <strong>"Instalar"</strong> en la barra de direcciones</p>
+                        <button onclick="this.parentElement.parentElement.remove()" style="background:#d35400;color:white;border:none;padding:12px 24px;border-radius:50px;margin-top:10px;cursor:pointer;">Entendido</button>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+            }
+
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                if (!installButton) installButton = createInstallButton();
+                const container = document.getElementById('installContainer');
+                if (container) container.style.display = 'block';
+            });
+
+            window.addEventListener('appinstalled', () => {
+                const container = document.getElementById('installContainer');
+                if (container) container.style.display = 'none';
+            });
+
+            const uninstallDiv = document.createElement('div');
+            uninstallDiv.className = 'uninstall-info';
+            uninstallDiv.innerHTML = '<i class="fas fa-trash-alt"></i> Cómo desinstalar';
+            uninstallDiv.onclick = () => document.getElementById('uninstallModal').style.display = 'block';
+            document.body.appendChild(uninstallDiv);
+
+            window.cerrarModalDesinstalar = function() {
+                document.getElementById('uninstallModal').style.display = 'none';
+            }
+
+            const BUSINESS_NUM = "+595982715041";
+            const el = {
+                nombre: document.getElementById('nombre'),
+                apellido: document.getElementById('apellido'),
+                empresa: document.getElementById('empresa'),
+                YoNecesito: document.getElementById('YoNecesito'),
+                modelo: document.getElementById('modelo'),
+                especificacion: document.getElementById('especificacion'),
+                obs: document.getElementById('obs'),
+                status: document.getElementById('statusMsg'),
+                preview: document.getElementById('previewMsg')
+            };
+            
+            let statusTimeout = null;
+            let isSending = false;
+
+            function showStatus(msg, type) {
+                if (statusTimeout) clearTimeout(statusTimeout);
+                el.status.textContent = msg;
+                el.status.className = `status ${type}`;
+                el.status.style.display = 'block';
+                const oldBtn = el.status.querySelector('.copy-btn');
+                if (oldBtn) oldBtn.remove();
+                statusTimeout = setTimeout(() => { el.status.style.display = 'none'; }, 5000);
+            }
+
+            function capitalize(str) {
+                if (!str) return '';
+                return str.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+            }
+
+            function applyCapitalization(e) {
+                const input = e.target;
+                const start = input.selectionStart;
+                const end = input.selectionEnd;
+                const capped = capitalize(input.value);
+                if (input.value !== capped) {
+                    input.value = capped;
+                    input.setSelectionRange(Math.min(start, capped.length), Math.min(end, capped.length));
+                }
+            }
+
+            document.querySelectorAll('.capitalize').forEach(field => {
+                field.addEventListener('input', applyCapitalization);
+                field.addEventListener('blur', () => applyCapitalization({ target: field }));
+            });
+
+            function saveForm() {
+                const data = {
+                    nombre: el.nombre.value, apellido: el.apellido.value, empresa: el.empresa.value,
+                   YoNecesito: el.YoNecesito.value, modelo: el.modelo.value,
+                    especificacion: el.especificacion.value, obs: el.obs.value
+                };
+                try { sessionStorage.setItem('formData', JSON.stringify(data)); } catch(e) {}
+            }
+            
+            let saveTimer;
+            function debouncedSave() { clearTimeout(saveTimer); saveTimer = setTimeout(saveForm, 300); }
+            document.querySelectorAll('#formPedido input, #formPedido select, #formPedido textarea').forEach(f => {
+                f.addEventListener('input', debouncedSave);
+                f.addEventListener('change', debouncedSave);
+            });
+
+            function loadForm() {
+                try {
+                    const saved = sessionStorage.getItem('formData');
+                    if (saved) {
+                        const d = JSON.parse(saved);
+                        el.nombre.value = d.nombre || '';
+                        el.apellido.value = d.apellido || '';
+                        el.empresa.value = d.empresa || '';
+                        el.YoNecesito.value = d.YoNecesito || '';
+                        el.modelo.value = d.modelo || '';
+                        el.especificacion.value = d.especificacion || '';
+                        el.obs.value = d.obs || '';
+                        if (el.nombre.value) applyCapitalization({ target: el.nombre });
+                        if (el.apellido.value) applyCapitalization({ target: el.apellido });
+                    }
+                } catch(e) {}
+            }
+
+            function setupEnterKeyNavigation() {
+                const campos = ['nombre', 'apellido', 'empresa', 'YoNecesito', 'modelo', 'especificacion', 'obs'];
+                const elementos = {};
+                campos.forEach(id => { elementos[id] = document.getElementById(id); });
+                
+                function getNextField(currentId) {
+                    const currentIndex = campos.indexOf(currentId);
+                    if (currentIndex === -1 || currentIndex === campos.length - 1) return null;
+                    return elementos[campos[currentIndex + 1]];
+                }
+                
+                campos.forEach((campoId, index) => {
+                    const campo = elementos[campoId];
+                    if (!campo) return;
+                    campo.addEventListener('keypress', function(e) {
+                        if (e.key === 'Enter') {
+                            e.preventDefault();
+                            if (index === campos.length - 1) {
+                                const btnWhatsApp = document.getElementById('btnWhatsApp');
+                                if (btnWhatsApp) btnWhatsApp.click();
+                                return;
+                            }
+                            const nextField = getNextField(campoId);
+                            if (nextField) {
+                                nextField.focus();
+                                if (nextField.tagName === 'SELECT') nextField.size = 1;
+                            }
+                        }
+                    });
+                });
+            }
+
+            function clearForm() {
+                el.nombre.value = '';
+                el.apellido.value = '';
+                el.empresa.value = '';
+                el.YoNecesito.value = '';
+                el.modelo.value = '';
+                el.especificacion.value = '';
+                el.obs.value = '';
+                try { sessionStorage.removeItem('formData'); } catch(e) {}
+                el.status.style.display = 'none';
+                el.preview.style.display = 'none';
+                showStatus('✅ Formulario limpiado', 'success');
+                el.nombre.focus();
+            }
+
+            function buildMessage() {
+                const nombre = el.nombre.value.trim();
+                const apellido = el.apellido.value.trim();
+                const empresa = el.empresa.value.trim();
+                const YoNecesito = el.YoNecesito.value;
+                const modelo = el.modelo.value;
+                const especificacion = el.especificacion.value.trim();
+                const obs = el.obs.value.trim();
+
+                if (!nombre) { showStatus("❌ Completa tu NOMBRE", "error"); el.nombre.focus(); return null; }
+                if (!apellido) { showStatus("❌ Completa tu APELLIDO", "error"); el.apellido.focus(); return null; }
+                if (!YoNecesito) { showStatus("❌ Selecciona YO NECESITO", "error"); el.YoNecesito.focus(); return null; }
+                if (!modelo) { showStatus("❌ Selecciona tu EQUIPO", "error"); el.modelo.focus(); return null; }
+                if (!especificacion) { showStatus("❌ Escribe la ESPECIFICACIÓN", "error"); el.especificacion.focus(); return null; }
+                if (!obs) { showStatus("❌ Escribe tu CONSULTA", "error"); el.obs.focus(); return null; }
+
+                let necesidadTexto = YoNecesito;
+                if (YoNecesito === "Reparacion") necesidadTexto = "Reparación";
+                else if (YoNecesito === "Recarga Tintas") necesidadTexto = "Recarga de Tintas";
+                else if (YoNecesito === "Recarga Toner") necesidadTexto = "Recarga de Toner";
+                else if (YoNecesito === "Compra") necesidadTexto = "Compra";
+                else if (YoNecesito === "Hacer una Donacion") necesidadTexto = "Donación";
+
+                let msg = `PYAHU SOLUCION INFORMATICA\n--------------------------------\n`;
+                msg += `Nombre: ${capitalize(nombre)} ${capitalize(apellido)}\n`;
+                if (empresa) msg += `Empresa: ${capitalize(empresa)}\n`;
+                msg += `Necesidad: ${necesidadTexto}\nEquipo: ${modelo}\nEspecificacion: ${especificacion}\n`;
+                msg += `Consulta: ${obs}\n--------------------------------\nEnviado desde web Pyahu`;
+                return msg;
+            }
+
+            function showPreview(msg) {
+                el.preview.textContent = msg;
+                el.preview.style.display = 'block';
+                setTimeout(() => { el.preview.style.display = 'none'; }, 8000);
+            }
+
+            function isInsideWhatsApp() { 
+                return /WhatsApp/i.test(navigator.userAgent || navigator.vendor || window.opera);
+            }
+
+            document.getElementById('btnWhatsApp').addEventListener('click', () => {
+                if (isSending) { showStatus("⏳ Procesando, espera...", "warning"); return; }
+                const message = buildMessage();
+                if (!message) return;
+                isSending = true;
+                const btn = document.getElementById('btnWhatsApp');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Procesando...';
+                btn.disabled = true;
+
+                const waLink = `https://wa.me/${BUSINESS_NUM.replace(/\D/g, '')}?text=${encodeURIComponent(message)}`;
+
+                if (isInsideWhatsApp()) {
+                    showStatus("📋 Copia el mensaje y pégalo en el chat", "warning");
+                    showPreview(message);
+                    const copyBtn = document.createElement('button');
+                    copyBtn.className = 'copy-btn';
+                    copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copiar mensaje';
+                    copyBtn.onclick = () => {
+                        navigator.clipboard.writeText(message).then(() => showStatus("✅ Copiado", "success"))
+                            .catch(() => showStatus("⚠️ Copia manualmente", "warning"));
+                    };
+                    el.status.appendChild(copyBtn);
+                } else {
+                    window.open(waLink, '_blank');
+                    showStatus("📱 Abriendo WhatsApp...", "success");
+                    showPreview(message);
+                }
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    isSending = false;
+                }, 2000);
+            });
+
+            document.getElementById('btnLimpiar').addEventListener('click', clearForm);
+
+            const modalOferta = document.getElementById('modalOferta');
+            document.getElementById('btnOferta').addEventListener('click', () => {
+                modalOferta.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+            document.getElementById('btnCerrarOferta').addEventListener('click', () => {
+                modalOferta.style.display = 'none';
+                document.body.style.overflow = '';
+            });
+            window.addEventListener('click', (e) => { if (e.target === modalOferta) {
+                modalOferta.style.display = 'none';
+                document.body.style.overflow = '';
+            }});
+
+            const btnCompartir = document.getElementById('btnCompartirSitio');
+            if (btnCompartir) {
+                btnCompartir.addEventListener('click', async () => {
+                    const url = 'https://pyahuinformatica.github.io/py/';
+                    if (navigator.share) {
+                        try {
+                            await navigator.share({
+                                title: 'Pyahu Solución Informática',
+                                text: 'Reparación, recarga de tintas y venta de insumos para impresoras',
+                                url: url
+                            });
+                        } catch (err) {
+                            if (err.name !== 'AbortError') {
+                                try {
+                                    await navigator.clipboard.writeText(url);
+                                    showStatus('✅ Enlace copiado', 'success');
+                                } catch(e) {
+                                    showStatus('📋 Comparte manualmente: ' + url, 'warning');
+                                }
+                            }
+                        }
+                    } else {
+                        try {
+                            await navigator.clipboard.writeText(url);
+                            showStatus('✅ Enlace copiado al portapapeles', 'success');
+                        } catch(e) {
+                            showStatus('📋 Copia manualmente: ' + url, 'warning');
+                        }
+                    }
+                });
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                loadForm();
+                setupEnterKeyNavigation();
+                const images = ['logoImg', 'footerImg1', 'footerImg2'];
+                images.forEach(id => {
+                    const img = document.getElementById(id);
+                    if (img) img.onerror = () => { img.style.display = 'none'; };
+                });
+                const imgOferta = document.getElementById('imagenOferta');
+                if (imgOferta) imgOferta.onerror = () => { imgOferta.style.display = 'none'; };
+            });
+        })();
+    </script>
+</body>
+</html>
